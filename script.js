@@ -181,31 +181,32 @@ function clearFocus()
 }
 
 
-//v 3.1: update function displayShoppinglists() to add to cart 
 function displayShoppinglists() {
 document.getElementById("MyList").innerHTML = '';
 var TheList = "";
 var TheRow = "";
 var arrayLength = shoppinglist.length;
 for (var i = 0; i < shoppinglist.length; i++) {
-  //v 3.1 change button name to btndelete
 var btndelete =  ' <input class="button" id="remove" name="delete" type="button" value="Remove" onclick="deleteShoppinglists(' + i + ')" />';
-var btnupdate =  ' <input class="button" name="edit" type="button" value="Edit Item" onclick="changeShoppinglist(' + i + ')" />';
-//v 3.1 add edit button using below i index & name it btnpdate
 var arrays = shoppinglist[i];
 arrays = "'"+arrays+"'";
 var btnaddcart =  '<input name="add" type="checkbox" id="adds" value="Add to Shopping Cart" onclick="addtoshopcart('+arrays+','+ i +')" />';
+//Week 14 Add Share Button
+var btnsharelist = '<input class="button" id="shares" name="shares" type="submit" value="Share Shopping List" onclick="share()" />';
 TheRow = '<li>' + shoppinglist[i] + btndelete + ' '  + btnaddcart + '</li>';
 TheList += TheRow;
 }
-//v3.1 add Title
 if (arrayLength > 0)
 {
-  document.getElementById("MyList").innerHTML = '<ul>' + TheList + '</ul>';
+ document.getElementById("MyList").innerHTML = '<ul>' + TheList + '</ul>';
+//Week 14 Add Share Button if arraylist contains values
+ document.getElementById("sharebutton").innerHTML = btnsharelist;
 }else
 {
-  document.getElementById("MyList").innerHTML = ' ';
-}
+ document.getElementById("MyList").innerHTML = ' ';
+//Week 14 Remove Share Button and Sharelist if arraylist contains values
+ document.getElementById("sharebutton").innerHTML = ' ';
+   document.getElementById("sharelist").innerHTML = ' ';
 }
 
 //v3.1
@@ -250,5 +251,70 @@ function deleteShoppingCart(position) {
   displayShoppinglists();
   displayShoppingCart();
 }
+
+//ShareList passbyvalues Week 14
+function passlist()
+{
+var url = "https://rvclist.github.io/rvclist14/index.html?list="+ shoppinglist;
+//Week 14 add link to sharelist id
+     document.getElementById("sharelist").innerHTML = 'Share List:\n' + url;
+//Copy URL
+     copyToClipboard(url);
+}
+//vFinal share function
+function share()
+{
+  passlist();
+}
+
+//Copy URL Week 14
+function copyToClipboard(text) {
+ var passbyurl = document.createElement("textarea");
+ passbyurl.value = text;
+ document.body.appendChild(passbyurl);
+ passbyurl.focus();
+ passbyurl.select();
+ document.execCommand("copy");
+ document.body.removeChild(passbyurl);
+ alert("URL has been copied. Ready to share: " + text);
+ //window.prompt("Copy & Share List!", text);
+  
+}
+
+ function populateshoppinglistonload()
+{
+  shoppinglist = [];
+  addtocart = [];
+  //load cookie into array
+  var y = readCookie('konkollist');
+  //remove unwanted chars and format
+  y = remove_unwanted(y); 
+  //spit array by comma %2C
+  
+   //v 4.1 get URL
+  var geturllistvalue = get("list");
+    if (geturllistvalue) {
+        geturllistvalue = remove_unwanted(geturllistvalue);
+      geturllistvalue = geturllistvalue.split(',');
+      shoppinglist = geturllistvalue;
+  }else if (y){
+       y = y.split('%2C');
+      shoppinglist = y;
+  }
+}
+
+ function get(name){
+    var url = window.location.search;
+    var num = url.search(name);
+    var namel = name.length;
+    var frontlength = namel+num+1; //length of everything before the value
+    var front = url.substring(0, frontlength);
+    url = url.replace(front, "");
+    num = url.search("&");
+    if(num>=0) return url.substr(0,num);
+    if(num<0)  return url;
+ }
+ 
+ 
 
 
