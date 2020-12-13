@@ -6,6 +6,19 @@
 //v 4.0 save / get array via cookies
 //v 4.0 read cookie on load and display
 
+window.onload = function() {
+ alert("Welcome to the Wedding To-Do List App!\nThis app is here to help releive the stress of planning a wedding by have you create a list of everything that needs to be done.\n\nCreated by Rock Valley College\n**Javascript(Web233) Shawn McLain\n\nQuestions?\nemail Shawn McLain\ns.mclain@rockvalleycollege.edu\n\nRegister @ RockValleyCollege.edu");
+ populateshoppinglistonload();
+  displayShoppinglists();
+    clearFocus();
+};
+
+function about()
+{
+     alert("Welcome to the Wedding To-Do List App!\nThis app is here to help releive the stress of planning a wedding by have you create a list of everything that needs to be done.\n\nCreated by Rock Valley College\n**Javascript(Web233) Shawn McLain\n\nQuestions?\nemail Shawn McLain\ns.mclain@rockvalleycollege.edu\n\nRegister @ RockValleyCollege.edu");
+
+}
+
 function passlist()
 {
 var url = "YOURGITHUBURL/index.html?list="+ shoppinglist;   //replace YOURGITHUBURL with your Github repo URL example: Konkollist.github.io
@@ -49,18 +62,7 @@ function copyToClipboard(text) {
 
 //v3.4
 
-window.onload = function() {
- alert("Welcome to 'Shopping List' App!\n\nCreated by Rock Valley College\n**Javascript(Web233) Shawn McLain\n\nQuestions?\nemail Shawn McLain\ns.mclain@rockvalleycollege.edu\n\nRegister @ RockValleyCollege.edu");
- populateshoppinglistonload();
-  displayShoppinglists();
-    clearFocus();
-};
 
-function about()
-{
-     alert("Welcome to 'Shopping List' App!\n\nCreated by Rock Valley College\n**Javascript(Web233) Shawn McLain\n\nQuestions?\nemail Shawn McLain\ns.mclain@rockvalleycollege.edu\n\nRegister @ RockValleyCollege.edu");
-
-}
 
 //read cookie and return
 function readCookie(name) {
