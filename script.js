@@ -6,7 +6,7 @@
 
 //v3.4 Add popup describing app when visitors load webpage the first time
 window.onload = function() {
-    alert("Welcome to the Wedding To-Do List App!\nThis app is here to help releive the stress of planning a wedding by have you create a list of everything that needs to be done.\n\nCreated by Rock Valley College\n**Javascript(Web233) Students**\n\nQuestions?\nemail Professor Chuck Konkol\nc.konkol@rockvalleycollege.edu\n\nRegister @ RockValleyCollege.edu");
+    alert("Welcome to the Wedding To-Do List App!\nThis app is here to help releive the stress of planning a wedding by have you create a list of everything that needs to be done.\n\nCreated by Shawn McLain\ns.mclain@rockvalleycollege.edu");
     populateshoppinglistonload();
     displayShoppinglists();
     clearFocus();
@@ -77,7 +77,7 @@ function copyToClipboard(text) {
 
 function about()
 {
-    alert("Welcome to the Wedding To-Do List App!\nThis app is here to help releive the stress of planning a wedding by have you create a list of everything that needs to be done.\n\nCreated by Rock Valley College\n**Javascript(Web233) Students**\n\nQuestions?\nemail Professor Chuck Konkol\nc.konkol@rockvalleycollege.edu\n\nRegister @ RockValleyCollege.edu");
+    alert("Welcome to the Wedding To-Do List App!\nThis app is here to help releive the stress of planning a wedding by have you create a list of everything that needs to be done.\n\nCreated by Shawn McLain\ns.mclain@rockvalleycollege.edu");
     
 }
 //read cookie and return
